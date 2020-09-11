@@ -6,6 +6,7 @@ class Subtraction extends StatefulWidget {
 }
 
 class _SubtractionState extends State<Subtraction> {
+  String res="0";
   TextEditingController s1=TextEditingController();
   TextEditingController s2=TextEditingController();
   @override
@@ -22,6 +23,9 @@ class _SubtractionState extends State<Subtraction> {
             children: <Widget>[
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(
+                  color: Colors.indigo
+                ),
                 controller: s1,
                 decoration: InputDecoration(
                   hintText: "Enter first number",
@@ -33,6 +37,9 @@ class _SubtractionState extends State<Subtraction> {
               ),
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(
+                    color: Colors.indigo
+                ),
                 controller: s2,
                 decoration: InputDecoration(
                   hintText: "Enter second number",
@@ -48,10 +55,12 @@ class _SubtractionState extends State<Subtraction> {
                   var s=int.parse(s1.text);
                   var ss=int.parse(s2.text);
                   var sss=s-ss;
-                  print(sss);
+                  setState(() {
+                    res=sss.toString();
+                  });
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.deepOrangeAccent,Colors.lightGreen]),
@@ -61,12 +70,17 @@ class _SubtractionState extends State<Subtraction> {
                 ),
               ),
               SizedBox(height: 10.0,),
+              Text(res,style: TextStyle(
+                fontSize: 35.0,
+                color: Colors.deepPurple
+              ),),
+              SizedBox(height: 10.0,),
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Calculation()));
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.deepOrangeAccent,Colors.lightGreen]),

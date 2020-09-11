@@ -6,6 +6,7 @@ class Addition extends StatefulWidget {
 }
 
 class _AdditionState extends State<Addition> {
+  String result="0";
   TextEditingController no1=TextEditingController();
   TextEditingController no2=TextEditingController();
   @override
@@ -23,6 +24,7 @@ class _AdditionState extends State<Addition> {
             children: <Widget>[
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(color: Colors.indigo),
                 controller: no1,
                 decoration: InputDecoration(
                   hintText: "Enter first Number",
@@ -34,6 +36,7 @@ class _AdditionState extends State<Addition> {
               ),
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(color: Colors.indigo),
                 controller: no2,
                 decoration: InputDecoration(
                   hintText: "Enter Second Number",
@@ -49,10 +52,14 @@ class _AdditionState extends State<Addition> {
                   var x=int.parse(no1.text);
                   var y=int.parse(no2.text);
                   var z=x+y;
-                  print(z);
+                  setState(() {
+                    result=z.toString();
+
+                  });
+
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.green,Colors.amberAccent]),
@@ -61,13 +68,19 @@ class _AdditionState extends State<Addition> {
                   child: Center(child: Text("Add")),
                 ),
               ),
+
+              SizedBox(height: 10.0,),
+              Text(result,style: TextStyle(
+                fontSize: 35.0,
+                color: Colors.deepPurple
+              ),),
               SizedBox(height: 10.0,),
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Calculation()));
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.green,Colors.amberAccent]),

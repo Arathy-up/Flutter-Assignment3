@@ -6,6 +6,7 @@ class Multiplication extends StatefulWidget {
 }
 
 class _MultiplicationState extends State<Multiplication> {
+  String r="0";
   TextEditingController m1=TextEditingController();
   TextEditingController m2=TextEditingController();
   @override
@@ -22,6 +23,9 @@ class _MultiplicationState extends State<Multiplication> {
             children: <Widget>[
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(
+                    color: Colors.indigo
+                ),
                 controller: m1,
                 decoration: InputDecoration(
                   hintText: "Enter first number",
@@ -33,6 +37,9 @@ class _MultiplicationState extends State<Multiplication> {
               ),
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(
+                    color: Colors.indigo
+                ),
                 controller: m2,
                 decoration: InputDecoration(
                   hintText: "Enter Second number",
@@ -48,10 +55,12 @@ class _MultiplicationState extends State<Multiplication> {
                   var m=int.parse(m1.text);
                   var mm=int.parse(m2.text);
                   var mmm=m*mm;
-                  print(mmm);
+                  setState(() {
+                    r=mmm.toString();
+                  });
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.deepOrangeAccent,Colors.deepPurpleAccent]),
@@ -61,12 +70,16 @@ class _MultiplicationState extends State<Multiplication> {
                 ),
               ),
               SizedBox(height: 10.0,),
+              Text(r,style: TextStyle(
+                  color: Colors.deepPurple,
+                  fontSize: 35.0),),
+              SizedBox(height: 10.0,),
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Calculation()));
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: [Colors.deepOrangeAccent,Colors.deepPurpleAccent]),

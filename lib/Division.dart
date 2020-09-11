@@ -6,6 +6,7 @@ class Division extends StatefulWidget {
 }
 
 class _DivisionState extends State<Division> {
+  String result="0";
   TextEditingController d1=TextEditingController();
   TextEditingController d2=TextEditingController();
   @override
@@ -22,6 +23,9 @@ class _DivisionState extends State<Division> {
             children: <Widget>[
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(
+                    color: Colors.indigo
+                ),
                 controller: d1,
                 decoration: InputDecoration(
                     hintText: "Enter first number",
@@ -33,6 +37,9 @@ class _DivisionState extends State<Division> {
               ),
               SizedBox(height: 5.0,),
               TextField(
+                style: TextStyle(
+                    color: Colors.indigo
+                ),
                 controller: d2,
                 decoration: InputDecoration(
                     hintText: "Enter Second number",
@@ -48,10 +55,12 @@ class _DivisionState extends State<Division> {
                   var d=int.parse(d1.text);
                   var dd=int.parse(d2.text);
                   var ddd=d/dd;
-                  print(ddd);
+                  setState(() {
+                    result=ddd.toString();
+                  });
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [Colors.lightGreenAccent,Colors.deepPurpleAccent]),
@@ -61,12 +70,16 @@ class _DivisionState extends State<Division> {
                 ),
               ),
               SizedBox(height: 10.0,),
+              Text(result,style: TextStyle(
+                color: Colors.deepPurple,
+              fontSize: 35.0),),
+              SizedBox(height: 10.0,),
               GestureDetector(
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Calculation()));
                 },
                 child: Container(
-                  height: 70.0,
+                  height: 60.0,
                   width: 500.0,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: [Colors.lightGreenAccent,Colors.deepPurpleAccent]),
